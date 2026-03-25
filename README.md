@@ -12,10 +12,10 @@
 
 | Thành viên | Vị trí | Phân hệ | Branch prefix |
 |---|---|---|---|
-| [TV1 - Họ tên] | Leader / BA Lead | BA & QA/QC + Tài liệu | `docs/`, `test/` |
-| [TV2 - Họ tên] | AI Engineer | AI Module | `feature/ai-*` |
-| [TV3 - Họ tên] | Web & Mobile Dev | CMS / Platforms / BI | `feature/web-*`, `feature/mobile-*` |
-| [TV4 - Họ tên] | Data Engineer / QA | Dữ liệu | `feature/data-*` |
+| [TV1 - Trần Duy Anh] | Leader / BA Lead | BA & QA/QC + Tài liệu | `docs/`, `test/` |
+| [TV2 - Nguyễn Lê Ngọc Bảo] | AI Engineer | AI Module | `feature/ai-*` |
+| [TV3 - Lê Huy Anh Dũng] | Web & Mobile Dev | CMS / Platforms / BI | `feature/web-*`, `feature/mobile-*` |
+| [TV4 - Phạm Dương Hoàng] | Data Engineer / QA | Dữ liệu | `feature/data-*` |
 
 ---
 
