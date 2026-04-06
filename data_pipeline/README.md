@@ -80,22 +80,43 @@ python -c "from etl.loader import check_connection; check_connection()"
 python scripts/run_full_pipeline.py
 
 # Hoặc từng bước
-python collectors/arxiv_collector.py --domain cs.CL --max 20000
-python collectors/pubmed_collector.py --domain NLP --max 15000
+# 1) Thu thập dữ liệu từ các collector
+scrapy runspider collectors/arxiv_collector.py -a save_separate=true -a max_results=1000 -a en_output_file=raw/arxiv_sentences_en.json -a vi_output_file=raw/arxiv_sentences_vi.json
+scrapy runspider collectors/pubmed_collector.py -a save_separate=true -a max_results=1000 -a en_output_file=raw/pubmed_sentences_en.json -a vi_output_file=raw/pubmed_sentences_vi.json
+scrapy runspider collectors/acl_collector.py -a save_separate=true -a max_results=1000 -a en_output_file=raw/acl_sentences_en.json -a vi_output_file=raw/acl_sentences_vi.json
 
-python etl/cleaner.py --input raw/ --output cleaned/
-python etl/aligner.py --input cleaned/ --output aligned/
-python etl/deduplicator.py --input aligned/ --output corpus/
-python etl/splitter.py --input corpus/all.tsv --train corpus/train.tsv --test corpus/test.tsv
+# 2) Làm sạch dữ liệu
+python etl/cleaner.py --input raw/ --output cleaned/ --drop-empty
+
+# 3) Align từng cặp EN-VI
+python etl/aligner.py --en cleaned/arxiv_sentences_en.json --vi cleaned/arxiv_sentences_vi.json --output aligned/arxiv_aligned.json
+python etl/aligner.py --en cleaned/pubmed_sentences_en.json --vi cleaned/pubmed_sentences_vi.json --output aligned/pubmed_aligned.json
+python etl/aligner.py --en cleaned/acl_sentences_en.json --vi cleaned/acl_sentences_vi.json --output aligned/acl_aligned.json
+
+# 4) Loại trùng lặp
+python etl/deduplicator.py --input aligned --output deduplicated --mode bilingual --fields en vi --drop-empty --rename-suffix-from _aligned --rename-suffix-to _dedup
+
+# 5) Chia train/test (90/10)
+python etl/splitter.py --input deduplicated --train corpus/train.tsv --test corpus/test.tsv --mode bilingual
+
+# 6) Kiểm tra và nạp vào PostgreSQL
+python etl/loader.py --check
 python etl/loader.py --file corpus/train.tsv
 
-# Seed Knowledge Graph
+# 7) Seed Knowledge Graph
 python kg/term_importer.py --csv kg/seed_data/cs_terms.csv
 python kg/term_importer.py --csv kg/seed_data/nlp_terms.csv
 python kg/relation_builder.py
-```
 
----
+# 8) Kiểm tra chất lượng
+python validators/quality_validator.py --file corpus/train.tsv --min-confidence 0.9
+python validators/quality_validator.py --file corpus/test.tsv --min-confidence 0.9
+
+python validators/schema_validator.py --file corpus/train.tsv
+python validators/schema_validator.py --file corpus/test.tsv
+
+python validators/stats_reporter.py --file corpus/train.tsv
+python validators/stats_reporter.py --file corpus/test.tsv
 
 ## 📋 Format bàn giao cho TV2
 
