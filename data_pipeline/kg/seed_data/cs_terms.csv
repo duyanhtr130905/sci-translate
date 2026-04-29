@@ -1,0 +1,211 @@
+﻿term_en,term_vi,domain,subdomain,parent_term_en,synonyms_en,definition_en,definition_vi
+algorithm,thuật toán,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+time complexity,độ phức tạp thời gian,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+space complexity,độ phức tạp không gian,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+big O notation,ký hiệu độ lớn O,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+recursion,đệ quy,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+dynamic programming,quy hoạch động,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+greedy algorithm,thuật toán tham lam,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+divide and conquer,chia để trị,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+backtracking,quay lui,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+branch and bound,nhánh cận,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+graph algorithm,thuật toán đồ thị,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+shortest path,đường đi ngắn nhất,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+minimum spanning tree,cây khung nhỏ nhất,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+topological sort,sắp xếp topo,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+binary search,tìm kiếm nhị phân,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+sorting algorithm,thuật toán sắp xếp,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+merge sort,sắp xếp trộn,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+quick sort,sắp xếp nhanh,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+heap sort,sắp xếp vun đống,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+breadth-first search,tìm kiếm theo chiều rộng,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+depth-first search,tìm kiếm theo chiều sâu,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+Dijkstra algorithm,thuật toán Dijkstra,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+Bellman-Ford algorithm,thuật toán Bellman-Ford,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+Floyd-Warshall algorithm,thuật toán Floyd-Warshall,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+Knuth-Morris-Pratt algorithm,thuật toán Knuth-Morris-Pratt,computer_science,algorithms,computer science,,A term in algorithms within computer science.,Thuật ngữ thuộc nhóm algorithms trong lĩnh vực computer science.
+data structure,cấu trúc dữ liệu,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+array,mảng,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+linked list,danh sách liên kết,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+stack,ngăn xếp,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+queue,hàng đợi,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+deque,hàng đợi hai đầu,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+hash table,bảng băm,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+tree,cây,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+binary tree,cây nhị phân,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+binary search tree,cây tìm kiếm nhị phân,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+AVL tree,cây AVL,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+B-tree,cây B,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+trie,cây tiền tố,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+graph,đồ thị,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+heap,đống,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+priority queue,hàng đợi ưu tiên,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+disjoint set,tập hợp rời nhau,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+adjacency list,danh sách kề,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+adjacency matrix,ma trận kề,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+suffix array,mảng hậu tố,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+segment tree,cây đoạn,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+Fenwick tree,cây Fenwick,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+skip list,danh sách bỏ qua,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+bloom filter,bộ lọc Bloom,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+red-black tree,cây đỏ đen,computer_science,data_structures,computer science,,A term in data structures within computer science.,Thuật ngữ thuộc nhóm data structures trong lĩnh vực computer science.
+operating system,hệ điều hành,computer_science,operating_systems,computer science,OS,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+kernel,hạt nhân,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+process,tiến trình,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+thread,luồng,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+scheduler,bộ lập lịch,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+context switch,chuyển ngữ cảnh,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+deadlock,bế tắc,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+mutual exclusion,loại trừ tương hỗ,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+semaphore,đèn hiệu,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+mutex,khóa tương hỗ,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+virtual memory,bộ nhớ ảo,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+paging,phân trang,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+segmentation,phân đoạn,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+file system,hệ thống tệp,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+interrupt,ngắt,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+system call,lời gọi hệ thống,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+device driver,trình điều khiển thiết bị,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+bootloader,bộ nạp khởi động,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+cache coherence,tính nhất quán bộ nhớ đệm,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+memory management unit,đơn vị quản lý bộ nhớ,computer_science,operating_systems,computer science,,A term in operating systems within computer science.,Thuật ngữ thuộc nhóm operating systems trong lĩnh vực computer science.
+database,cơ sở dữ liệu,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+relational database,cơ sở dữ liệu quan hệ,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+table,bảng,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+row,hàng,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+column,cột,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+primary key,khóa chính,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+foreign key,khóa ngoại,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+index,chỉ mục,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+query,truy vấn,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+SQL,SQL,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+transaction,giao dịch,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+ACID,ACID,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+normalization,chuẩn hóa,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+denormalization,phi chuẩn hóa,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+join,phép nối,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+view,khung nhìn,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+stored procedure,thủ tục lưu trữ,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+trigger,bộ kích hoạt,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+replication,sao chép dữ liệu,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+sharding,phân mảnh dữ liệu,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+data warehouse,kho dữ liệu,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+OLTP,xử lý giao dịch trực tuyến,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+OLAP,xử lý phân tích trực tuyến,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+NoSQL database,cơ sở dữ liệu NoSQL,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+query optimizer,bộ tối ưu truy vấn,computer_science,databases,computer science,,A term in databases within computer science.,Thuật ngữ thuộc nhóm databases trong lĩnh vực computer science.
+computer network,mạng máy tính,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+protocol,giao thức,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+TCP,TCP,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+UDP,UDP,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+IP address,địa chỉ IP,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+subnet mask,mặt nạ mạng,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+routing,định tuyến,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+switch,bộ chuyển mạch,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+router,bộ định tuyến,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+firewall,tường lửa,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+DNS,DNS,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+DHCP,DHCP,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+NAT,biên dịch địa chỉ mạng,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+VPN,mạng riêng ảo,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+packet,gói tin,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+bandwidth,băng thông,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+latency,độ trễ,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+throughput,thông lượng,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+socket,ổ cắm mạng,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+load balancer,bộ cân bằng tải,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+OSI model,mô hình OSI,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+application layer,tầng ứng dụng,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+transport layer,tầng giao vận,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+network layer,tầng mạng,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+link layer,tầng liên kết,computer_science,networking,computer science,,A term in networking within computer science.,Thuật ngữ thuộc nhóm networking trong lĩnh vực computer science.
+cybersecurity,an ninh mạng,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+encryption,mã hóa,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+decryption,giải mã,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+plaintext,bản rõ,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+ciphertext,bản mã,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+authentication,xác thực,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+authorization,phân quyền,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+digital signature,chữ ký số,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+hash function,hàm băm,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+public key cryptography,mật mã khóa công khai,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+symmetric encryption,mã hóa đối xứng,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+asymmetric encryption,mã hóa bất đối xứng,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+access control,kiểm soát truy cập,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+vulnerability,lỗ hổng,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+penetration testing,kiểm thử xâm nhập,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+malware,mã độc,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+phishing,lừa đảo giả mạo,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+intrusion detection,phát hiện xâm nhập,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+security policy,chính sách bảo mật,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+zero trust,không tin cậy mặc định,computer_science,security,computer science,,A term in security within computer science.,Thuật ngữ thuộc nhóm security trong lĩnh vực computer science.
+software engineering,kỹ nghệ phần mềm,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+requirement analysis,phân tích yêu cầu,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+software design,thiết kế phần mềm,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+design pattern,mẫu thiết kế,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+object-oriented programming,lập trình hướng đối tượng,computer_science,software_engineering,computer science,OOP,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+functional programming,lập trình hàm,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+version control,quản lý phiên bản,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+Git,Git,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+continuous integration,tích hợp liên tục,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+continuous deployment,triển khai liên tục,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+unit test,kiểm thử đơn vị,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+integration test,kiểm thử tích hợp,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+debugging,gỡ lỗi,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+refactoring,tái cấu trúc mã,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+technical debt,nợ kỹ thuật,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+code review,rà soát mã,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+microservice,vi dịch vụ,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+API,giao diện lập trình ứng dụng,computer_science,software_engineering,computer science,application programming interface,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+REST API,API REST,computer_science,software_engineering,computer science,RESTful API,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+software architecture,kiến trúc phần mềm,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+domain-driven design,thiết kế hướng miền,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+dependency injection,tiêm phụ thuộc,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+containerization,đóng gói bằng vùng chứa,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+Docker,Docker,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+Kubernetes,Kubernetes,computer_science,software_engineering,computer science,,A term in software engineering within computer science.,Thuật ngữ thuộc nhóm software engineering trong lĩnh vực computer science.
+distributed system,hệ phân tán,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+fault tolerance,khả năng chịu lỗi,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+consensus algorithm,thuật toán đồng thuận,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+leader election,bầu chọn lãnh đạo,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+eventual consistency,nhất quán cuối cùng,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+strong consistency,nhất quán mạnh,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+message queue,hàng đợi thông điệp,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+publish-subscribe,xuất bản-đăng ký,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+service discovery,khám phá dịch vụ,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+cloud computing,điện toán đám mây,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+virtual machine,máy ảo,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+hypervisor,trình giám sát máy ảo,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+serverless computing,điện toán không máy chủ,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+edge computing,điện toán biên,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+content delivery network,mạng phân phối nội dung,computer_science,distributed_systems,computer science,CDN,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+observability,khả năng quan sát,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+logging,ghi nhật ký,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+monitoring,giám sát,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+tracing,truy vết,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+autoscaling,tự động mở rộng,computer_science,distributed_systems,computer science,,A term in distributed systems within computer science.,Thuật ngữ thuộc nhóm distributed systems trong lĩnh vực computer science.
+computer architecture,kiến trúc máy tính,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+instruction set architecture,kiến trúc tập lệnh,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+CPU,CPU,computer_science,computer_architecture,computer science,central processing unit,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+GPU,GPU,computer_science,computer_architecture,computer science,graphics processing unit,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+ALU,bộ số học và logic,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+register,thanh ghi,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+pipeline,đường ống lệnh,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+superscalar,siêu vô hướng,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+branch prediction,dự đoán nhánh,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+cache memory,bộ nhớ đệm,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+main memory,bộ nhớ chính,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+bus,bus,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+parallel computing,tính toán song song,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+multicore processor,bộ xử lý đa lõi,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+SIMD,SIMD,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+throughput computing,tính toán thông lượng,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+compiler,trình biên dịch,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+interpreter,trình thông dịch,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+type system,hệ kiểu,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+formal language,ngôn ngữ hình thức,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+automata theory,lý thuyết ô tô mát,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+computability,khả năng tính toán,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+complexity class,lớp độ phức tạp,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+NP-completeness,tính NP-đầy đủ,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
+Turing machine,máy Turing,computer_science,computer_architecture,computer science,,A term in computer architecture within computer science.,Thuật ngữ thuộc nhóm computer architecture trong lĩnh vực computer science.
