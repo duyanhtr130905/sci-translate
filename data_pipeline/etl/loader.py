@@ -1,5 +1,6 @@
 import os
 import argparse
+import re
 from pathlib import Path
 
 import pandas as pd
@@ -10,12 +11,30 @@ from sqlalchemy.exc import SQLAlchemyError
 
 load_dotenv()
 
-DEFAULT_DATABASE_URL = "postgresql+psycopg2://postgres:postgres@localhost:5432/sci_translate"
-DATABASE_URL = os.getenv("DATABASE_URL", DEFAULT_DATABASE_URL)
+_TABLE_NAME_RE = re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*$')
+
+
+def _validate_table_name(name: str) -> str:
+    if not _TABLE_NAME_RE.match(name):
+        raise ValueError(
+            f"Tên bảng không hợp lệ: {name!r}. "
+            "Chỉ cho phép ký tự [a-zA-Z_][a-zA-Z0-9_]*"
+        )
+    return name
+
+
+def _get_database_url() -> str:
+    url = os.getenv("DATABASE_URL")
+    if not url:
+        raise EnvironmentError(
+            "Biến môi trường DATABASE_URL chưa được set. "
+            "Ví dụ: DATABASE_URL=postgresql+psycopg2://user:pass@host:5432/dbname"
+        )
+    return url
 
 
 def get_engine():
-    return create_engine(DATABASE_URL)
+    return create_engine(_get_database_url())
 
 
 def check_connection():
@@ -33,6 +52,7 @@ def check_connection():
 
 
 def ensure_table_exists(table_name: str = "translation_memory"):
+    _validate_table_name(table_name)
     engine = get_engine()
     create_sql = f"""
     CREATE TABLE IF NOT EXISTS {table_name} (
@@ -45,19 +65,26 @@ def ensure_table_exists(table_name: str = "translation_memory"):
         conn.execute(text(create_sql))
 
 
-def load_tsv(file_path: str, table_name: str = "translation_memory", if_exists: str = "append"):
+def load_tsv(file_path: str, table_name: str = "translation_memory", if_exists: str = "append", has_header: bool = False):
     file_path = Path(file_path)
 
     if not file_path.exists():
         raise FileNotFoundError(f"Không tìm thấy file: {file_path}")
 
-    df = pd.read_csv(
-        file_path,
-        sep="\t",
-        header=None,
-        names=["en_text", "vi_text"],
-        encoding="utf-8"
-    )
+    _validate_table_name(table_name)
+
+    if has_header:
+        df = pd.read_csv(file_path, sep="\t", encoding="utf-8")
+        df = df.iloc[:, :2]
+        df.columns = ["en_text", "vi_text"]
+    else:
+        df = pd.read_csv(
+            file_path,
+            sep="\t",
+            header=None,
+            names=["en_text", "vi_text"],
+            encoding="utf-8"
+        )
 
     # Làm sạch cơ bản
     df = df.dropna()
@@ -125,6 +152,7 @@ def main():
         help="Cách ghi vào bảng nếu bảng đã tồn tại"
     )
     parser.add_argument("--check", action="store_true", help="Chỉ kiểm tra kết nối PostgreSQL")
+    parser.add_argument("--has-header", action="store_true", help="File TSV có header row")
     parser.add_argument("--preview", action="store_true", help="Xem trước dữ liệu TSV")
     parser.add_argument("--rows", type=int, default=5, help="Số dòng preview, mặc định 5")
 
@@ -141,7 +169,7 @@ def main():
         preview_data(args.file, args.rows)
         return
 
-    load_tsv(args.file, args.table, args.if_exists)
+    load_tsv(args.file, args.table, args.if_exists, has_header=args.has_header)
 
 
 if __name__ == "__main__":

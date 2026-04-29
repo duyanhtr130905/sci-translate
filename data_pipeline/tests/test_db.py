@@ -6,12 +6,15 @@ from sqlalchemy import create_engine, text
 def get_database_url() -> str:
     """
     Ưu tiên DATABASE_URL nếu đã set.
-    Nếu chưa có thì dùng mặc định để test từ máy host.
+    Raise lỗi rõ ràng nếu chưa có.
     """
-    return os.getenv(
-        "DATABASE_URL",
-        "postgresql+psycopg2://postgres:postgres@localhost:5432/sci_translate",
-    )
+    url = os.getenv("DATABASE_URL")
+    if not url:
+        raise EnvironmentError(
+            "Biến môi trường DATABASE_URL chưa được set. "
+            "Ví dụ: DATABASE_URL=postgresql+psycopg2://user:pass@host:5432/dbname"
+        )
+    return url
 
 
 def test_postgresql_connection_ok():

@@ -153,34 +153,34 @@ def main() -> int:
     if args.with_collectors:
         run_cmd(
             [
-                PYTHON,
+                PYTHON, "-m", "scrapy", "runspider",
                 str(COLLECTORS_DIR / "arxiv_collector.py"),
-                "--domain",
-                "cs.CL",
-                "--max",
-                "20000",
+                "-a", "max_results=20000",
+                "-a", "save_separate=true",
+                "-a", f"en_output_file={RAW_DIR / 'arxiv_sentences_en.json'}",
+                "-a", f"vi_output_file={RAW_DIR / 'arxiv_sentences_vi.json'}",
             ],
             "Collect arXiv data",
         )
         run_cmd(
             [
-                PYTHON,
+                PYTHON, "-m", "scrapy", "runspider",
                 str(COLLECTORS_DIR / "pubmed_collector.py"),
-                "--domain",
-                "NLP",
-                "--max",
-                "15000",
+                "-a", "max_results=15000",
+                "-a", "save_separate=true",
+                "-a", f"en_output_file={RAW_DIR / 'pubmed_sentences_en.json'}",
+                "-a", f"vi_output_file={RAW_DIR / 'pubmed_sentences_vi.json'}",
             ],
             "Collect PubMed data",
         )
         run_cmd(
             [
-                PYTHON,
+                PYTHON, "-m", "scrapy", "runspider",
                 str(COLLECTORS_DIR / "acl_collector.py"),
-                "--query",
-                "machine translation",
-                "--max-results",
-                "15000",
+                "-a", "max_results=15000",
+                "-a", "save_separate=true",
+                "-a", f"en_output_file={RAW_DIR / 'acl_sentences_en.json'}",
+                "-a", f"vi_output_file={RAW_DIR / 'acl_sentences_vi.json'}",
             ],
             "Collect ACL data",
         )

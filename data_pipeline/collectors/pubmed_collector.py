@@ -1,7 +1,13 @@
 import json
 import re
+import sys
+from pathlib import Path
 from typing import Any, Iterable
 from urllib.parse import parse_qs, urlparse
+
+_COLLECTORS_DIR = str(Path(__file__).resolve().parent)
+if _COLLECTORS_DIR not in sys.path:
+    sys.path.insert(0, _COLLECTORS_DIR)
 
 from base_collector import BaseCollectorSpider
 

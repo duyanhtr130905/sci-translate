@@ -45,10 +45,13 @@ def count_non_empty_lines(path: Path) -> int:
 
 
 def get_database_url() -> str:
-    return os.getenv(
-        "DATABASE_URL",
-        "postgresql+psycopg2://postgres:postgres@localhost:5432/sci_translate",
-    )
+    url = os.getenv("DATABASE_URL")
+    if not url:
+        raise EnvironmentError(
+            "Biến môi trường DATABASE_URL chưa được set. "
+            "Ví dụ: DATABASE_URL=postgresql+psycopg2://user:pass@host:5432/dbname"
+        )
+    return url
 
 
 def check_postgres() -> tuple[bool, int]:
@@ -65,9 +68,23 @@ def check_postgres() -> tuple[bool, int]:
 
 
 def get_neo4j_config() -> tuple[str, str, str]:
-    uri = os.getenv("NEO4J_URI", "bolt://localhost:7687")
-    user = os.getenv("NEO4J_USER", "neo4j")
-    password = os.getenv("NEO4J_PASSWORD", "password")
+    uri = os.getenv("NEO4J_URI")
+    user = os.getenv("NEO4J_USER")
+    password = os.getenv("NEO4J_PASSWORD")
+
+    missing = []
+    if not uri:
+        missing.append("NEO4J_URI")
+    if not user:
+        missing.append("NEO4J_USER")
+    if not password:
+        missing.append("NEO4J_PASSWORD")
+    if missing:
+        raise EnvironmentError(
+            f"Thiếu biến môi trường: {', '.join(missing)}. "
+            "Hãy set NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD."
+        )
+
     return uri, user, password
 
 

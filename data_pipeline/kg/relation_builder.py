@@ -37,11 +37,24 @@ def split_multi_value(raw: str) -> list[str]:
 
 
 def get_neo4j_config(uri: Optional[str], user: Optional[str], password: Optional[str]):
-    return (
-        uri or os.getenv("NEO4J_URI", "bolt://localhost:7687"),
-        user or os.getenv("NEO4J_USER", "neo4j"),
-        password or os.getenv("NEO4J_PASSWORD", "password"),
-    )
+    resolved_uri = uri or os.getenv("NEO4J_URI")
+    resolved_user = user or os.getenv("NEO4J_USER")
+    resolved_password = password or os.getenv("NEO4J_PASSWORD")
+
+    missing = []
+    if not resolved_uri:
+        missing.append("NEO4J_URI")
+    if not resolved_user:
+        missing.append("NEO4J_USER")
+    if not resolved_password:
+        missing.append("NEO4J_PASSWORD")
+    if missing:
+        raise EnvironmentError(
+            f"Thiếu biến môi trường: {', '.join(missing)}. "
+            "Hãy set NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD."
+        )
+
+    return resolved_uri, resolved_user, resolved_password
 
 
 FETCH_ROWS_QUERY = """

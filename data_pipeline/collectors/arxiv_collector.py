@@ -2,10 +2,15 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 import urllib.parse
 import urllib.request
 from pathlib import Path
 from typing import Any, Iterable, Optional
+
+_COLLECTORS_DIR = str(Path(__file__).resolve().parent)
+if _COLLECTORS_DIR not in sys.path:
+    sys.path.insert(0, _COLLECTORS_DIR)
 
 from base_collector import BaseCollectorSpider
 
