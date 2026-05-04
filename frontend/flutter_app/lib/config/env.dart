@@ -1,7 +1,7 @@
-class Env {
-  static const bool useMock =
-  bool.fromEnvironment('USE_MOCK', defaultValue: true);
+import 'package:flutter/foundation.dart';
 
-  static const String apiBaseUrl =
-  String.fromEnvironment('API_BASE_URL', defaultValue: 'http://localhost:8000');
+class AppConfig {
+  static const String baseUrl = 'http://localhost:57094';
+  static const bool useMock = bool.fromEnvironment('USE_MOCK', defaultValue: false);
+  static bool get isWeb => kIsWeb;
 }

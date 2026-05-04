@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'history_screen.dart';
 import 'favorites_screen.dart';
-import 'dashboard_screen.dart';
 
 class MainShell extends StatefulWidget {
   const MainShell({Key? key}) : super(key: key);
@@ -16,7 +15,6 @@ class _MainShellState extends State<MainShell> {
 
   final _pages = const [
     HomeScreen(),
-    DashboardScreen(),
     HistoryScreen(),
     FavoritesScreen(),
   ];
@@ -30,7 +28,6 @@ class _MainShellState extends State<MainShell> {
         onTap: (i) => setState(() => _index = i),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.translate), label: 'Dịch'),
-          BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: 'Dashboard'),
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Lịch sử'),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Yêu thích'),
         ],
