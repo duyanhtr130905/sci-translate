@@ -42,7 +42,7 @@ docker compose ps -a
 
 # 5. Kiểm tra AI Service
 curl http://localhost:8000/health
-# Kết quả mong đợi: {"status": "ok", "engine": "ollama", "model": "gemma2"}
+# Kết quả mong đợi: {"status": "ok", "engine": "ollama", "model": "qwen2.5:7b"}
 ```
 
 > **Lưu ý Ollama (TV2):** Ollama KHÔNG chạy trong Docker.
@@ -169,8 +169,8 @@ curl -fsSL https://ollama.ai/install.sh | sh
 # Windows
 # Tải installer từ https://ollama.com/download/windows
 
-# Pull model (~5.4GB, chạy 1 lần)
-ollama pull gemma2
+# Pull model (~4.7GB, chạy 1 lần)
+ollama pull qwen2.5:7b
 
 # Chạy Ollama daemon (giữ terminal này mở khi làm việc)
 ollama serve
@@ -178,7 +178,7 @@ ollama serve
 
 # Kiểm tra
 ollama list
-# Phải thấy "gemma2" trong danh sách
+# Phải thấy "qwen2.5:7b" trong danh sách
 ```
 
 **Nhiệm vụ Docker:**

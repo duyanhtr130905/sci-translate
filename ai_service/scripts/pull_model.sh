@@ -7,7 +7,7 @@
 
 set -euo pipefail
 
-MODEL_NAME="${1:-gemma2}"
+MODEL_NAME="${1:-qwen2.5:7b}"
 
 echo "╔══════════════════════════════════════════╗"
 echo "║  SCI-Translate — Ollama Model Setup      ║"

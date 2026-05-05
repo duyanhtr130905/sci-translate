@@ -14,7 +14,7 @@ def mock_config():
     """Config cho test (không cần Ollama thật)."""
     return OllamaConfig(
         base_url="http://localhost:11434",
-        model="gemma2",
+        model="qwen2.5:7b",
         temperature=0.3,
         num_ctx=4096,
         timeout=30,
@@ -105,7 +105,7 @@ class TestOllamaEngine:
         with patch("models.ollama_engine.ollama_sdk") as mock_sdk:
             mock_client = MagicMock()
             mock_model = MagicMock()
-            mock_model.model = "gemma2"
+            mock_model.model = "qwen2.5:7b"
             mock_models = MagicMock()
             mock_models.models = [mock_model]
             mock_client.list.return_value = mock_models
@@ -137,7 +137,7 @@ class TestOllamaConfig:
         """Config mặc định phải có giá trị hợp lệ."""
         config = OllamaConfig()
         assert config.base_url == "http://localhost:11434"
-        assert config.model == "gemma2"
+        assert config.model == "qwen2.5:7b"
         assert 0.0 <= config.temperature <= 2.0
         assert config.num_ctx > 0
 

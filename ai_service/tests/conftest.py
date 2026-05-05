@@ -19,7 +19,7 @@ def mock_ollama_client():
 
     # Mock list response
     mock_model = MagicMock()
-    mock_model.model = "gemma2"
+    mock_model.model = "qwen2.5:7b"
     mock_models = MagicMock()
     mock_models.models = [mock_model]
     client.list.return_value = mock_models

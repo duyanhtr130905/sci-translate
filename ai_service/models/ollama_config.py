@@ -13,7 +13,7 @@ class OllamaConfig:
 
     # Ollama server
     base_url: str = "http://localhost:11434"
-    model: str = "gemma2"
+    model: str = "qwen2.5:7b"
 
     # Generation parameters
     temperature: float = 0.3       # Thấp → dịch chính xác hơn, ít sáng tạo
@@ -29,7 +29,7 @@ class OllamaConfig:
         """Tạo config từ biến môi trường."""
         return cls(
             base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
-            model=os.getenv("OLLAMA_MODEL", "gemma2"),
+            model=os.getenv("OLLAMA_MODEL", "qwen2.5:7b"),
             temperature=float(os.getenv("OLLAMA_TEMPERATURE", "0.3")),
             num_ctx=int(os.getenv("OLLAMA_NUM_CTX", "4096")),
             timeout=int(os.getenv("OLLAMA_TIMEOUT", "120")),
