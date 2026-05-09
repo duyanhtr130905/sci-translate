@@ -1,0 +1,46 @@
+# ── Secrets ──
+.env
+*.env.local
+
+# ── AI Models (quá lớn để commit) ──
+ai_service/models/Helsinki-NLP/
+ai_service/models/*.bin
+ai_service/models/*.safetensors
+
+# ── Raw data (GB+) ──
+data_pipeline/raw/
+data_pipeline/cleaned/
+data_pipeline/aligned/
+
+# ── Python ──
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── Node ──
+node_modules/
+frontend/web/build/
+frontend/mobile/.expo/
+frontend/mobile/dist/
+
+# ── Docker volumes ──
+.docker/
+
+# ── IDE ──
+.vscode/
+.idea/
+*.swp
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+
+# ── Logs ──
+*.log
+logs/

@@ -1,0 +1,57 @@
+name: CI — SCI-Translate
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-data-pipeline:
+    name: "[TV4] Data Pipeline Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r data_pipeline/requirements.txt
+      - run: pytest data_pipeline/tests/test_etl.py data_pipeline/tests/test_validators.py -v
+        env:
+          DATABASE_URL: postgresql://sci:sci@localhost:5432/sci_translate
+
+  test-ai-service:
+    name: "[TV2] AI Service Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r ai_service/requirements.txt
+      - run: pytest ai_service/tests/test_marianmt.py ai_service/tests/test_rag.py ai_service/tests/test_kg.py -v
+        env:
+          MODEL_PATH: ./ai_service/models
+          NEO4J_URI: bolt://localhost:7687
+
+  test-frontend:
+    name: "[TV3] Frontend Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd frontend/web && npm ci && npm test -- --watchAll=false
+
+  lint:
+    name: "Lint All"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install flake8 black
+      - run: flake8 ai_service/ data_pipeline/ --max-line-length 100
+      - run: black --check ai_service/ data_pipeline/

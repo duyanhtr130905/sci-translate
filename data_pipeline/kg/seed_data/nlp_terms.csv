@@ -1,0 +1,161 @@
+﻿term_en,term_vi,domain,subdomain,parent_term_en,synonyms_en,definition_en,definition_vi
+natural language processing,xử lý ngôn ngữ tự nhiên,nlp_ai,preprocessing,nlp,NLP,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+corpus,ngữ liệu,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+token,token,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+tokenization,tách token,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+subword tokenization,tách token dưới từ,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+sentence segmentation,tách câu,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+word segmentation,tách từ,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+normalization,chuẩn hóa,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+stemming,rút gọn từ,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+lemmatization,chuẩn hóa gốc từ,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+part-of-speech tagging,gán nhãn từ loại,nlp_ai,preprocessing,nlp,POS tagging; POS,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+named entity recognition,nhận dạng thực thể có tên,nlp_ai,preprocessing,nlp,NER,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+chunking,phân đoạn cú pháp,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+dependency parsing,phân tích phụ thuộc,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+constituency parsing,phân tích cấu trúc thành phần,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+co-reference resolution,phân giải đồng tham chiếu,nlp_ai,preprocessing,nlp,coreference resolution; coref,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+word sense disambiguation,phân giải nhập nhằng nghĩa từ,nlp_ai,preprocessing,nlp,WSD,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+language identification,nhận diện ngôn ngữ,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+stopword,từ dừng,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+n-gram,n-gram,nlp_ai,preprocessing,nlp,,A term in preprocessing within nlp ai.,Thuật ngữ thuộc nhóm preprocessing trong lĩnh vực nlp ai.
+embedding,vector nhúng,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+word embedding,vector nhúng từ,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+sentence embedding,vector nhúng câu,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+document embedding,vector nhúng tài liệu,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+contextual embedding,vector nhúng ngữ cảnh,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+semantic representation,biểu diễn ngữ nghĩa,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+feature extraction,trích xuất đặc trưng,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+bag of words,túi từ,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+TF-IDF,TF-IDF,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+latent semantic analysis,phân tích ngữ nghĩa tiềm ẩn,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+vector space model,mô hình không gian vector,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+dense retrieval,truy xuất dày đặc,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+sparse retrieval,truy xuất thưa,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+similarity search,tìm kiếm tương tự,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+cosine similarity,độ tương đồng cosine,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+semantic similarity,độ tương đồng ngữ nghĩa,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+cross-encoder,bộ mã hóa chéo,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+bi-encoder,bộ mã hóa đôi,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+reranker,bộ xếp hạng lại,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+indexing,lập chỉ mục,nlp_ai,representations,nlp,,A term in representations within nlp ai.,Thuật ngữ thuộc nhóm representations trong lĩnh vực nlp ai.
+language model,mô hình ngôn ngữ,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+n-gram language model,mô hình ngôn ngữ n-gram,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+hidden Markov model,mô hình Markov ẩn,nlp_ai,modeling,nlp,HMM,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+conditional random field,trường ngẫu nhiên có điều kiện,nlp_ai,modeling,nlp,CRF,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+sequence labeling,gán nhãn chuỗi,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+sequence-to-sequence,chuỗi sang chuỗi,nlp_ai,modeling,nlp,seq2seq,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+encoder-decoder,mã hóa-giải mã,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+attention mechanism,cơ chế chú ý,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+self-attention,tự chú ý,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+multi-head attention,chú ý đa đầu,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+positional encoding,mã hóa vị trí,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+beam search,tìm kiếm chùm,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+greedy decoding,giải mã tham lam,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+teacher forcing,ép buộc giáo viên,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+exposure bias,thiên lệch phơi nhiễm,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+label smoothing,làm mượt nhãn,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+transfer learning,học chuyển giao,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+fine-tuning,tinh chỉnh,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+instruction tuning,tinh chỉnh theo chỉ dẫn,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+domain adaptation,thích nghi miền,nlp_ai,modeling,nlp,,A term in modeling within nlp ai.,Thuật ngữ thuộc nhóm modeling trong lĩnh vực nlp ai.
+machine translation,dịch máy,nlp_ai,machine_translation,nlp,MT,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+neural machine translation,dịch máy thần kinh,nlp_ai,machine_translation,nlp,NMT,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+statistical machine translation,dịch máy thống kê,nlp_ai,machine_translation,nlp,SMT,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+source language,ngôn ngữ nguồn,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+target language,ngôn ngữ đích,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+parallel corpus,ngữ liệu song song,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+bitext,cặp ngữ liệu song song,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+alignment,căn chỉnh,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+sentence alignment,căn chỉnh câu,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+word alignment,căn chỉnh từ,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+translation memory,bộ nhớ dịch,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+terminology extraction,trích xuất thuật ngữ,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+terminology insertion,chèn thuật ngữ,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+back translation,dịch ngược,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+pivot language,ngôn ngữ trung gian,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+quality estimation,ước lượng chất lượng,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+post-editing,hậu biên tập,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+multilingual translation,dịch đa ngôn ngữ,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+low-resource translation,dịch ngôn ngữ ít tài nguyên,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+document-level translation,dịch cấp tài liệu,nlp_ai,machine_translation,nlp,,A term in machine translation within nlp ai.,Thuật ngữ thuộc nhóm machine translation trong lĩnh vực nlp ai.
+large language model,mô hình ngôn ngữ lớn,nlp_ai,llm,nlp,LLM,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+foundation model,mô hình nền tảng,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+prompt,lời nhắc,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+prompt engineering,thiết kế lời nhắc,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+in-context learning,học trong ngữ cảnh,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+few-shot prompting,nhắc ít ví dụ,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+zero-shot prompting,nhắc không ví dụ,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+chain-of-thought,chuỗi suy luận,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+hallucination,ảo giác,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+alignment,căn chỉnh,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+safety tuning,tinh chỉnh an toàn,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+reinforcement learning from human feedback,học tăng cường từ phản hồi con người,nlp_ai,llm,nlp,RLHF,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+supervised fine-tuning,tinh chỉnh có giám sát,nlp_ai,llm,nlp,SFT,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+parameter-efficient fine-tuning,tinh chỉnh hiệu quả tham số,nlp_ai,llm,nlp,PEFT,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+LoRA,LoRA,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+quantization,lượng tử hóa,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+context window,cửa sổ ngữ cảnh,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+tool use,sử dụng công cụ,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+agent,tác tử,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+function calling,gọi hàm,nlp_ai,llm,nlp,,A term in llm within nlp ai.,Thuật ngữ thuộc nhóm llm trong lĩnh vực nlp ai.
+retrieval-augmented generation,sinh tăng cường truy xuất,nlp_ai,rag,nlp,RAG,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+retriever,bộ truy xuất,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+generator,bộ sinh,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+knowledge graph,đồ thị tri thức,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+vector database,cơ sở dữ liệu vector,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+embedding model,mô hình nhúng,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+passage retrieval,truy xuất đoạn văn,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+chunking,chia đoạn,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+context compression,nén ngữ cảnh,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+query rewriting,viết lại truy vấn,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+hybrid search,tìm kiếm lai,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+metadata filtering,lọc theo siêu dữ liệu,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+semantic cache,bộ nhớ đệm ngữ nghĩa,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+reranking,xếp hạng lại,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+citation grounding,neo dẫn chứng,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+grounded generation,sinh có căn cứ,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+knowledge base,cơ sở tri thức,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+termbase,cơ sở thuật ngữ,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+entity linking,liên kết thực thể,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+graph traversal,duyệt đồ thị,nlp_ai,rag,nlp,,A term in rag within nlp ai.,Thuật ngữ thuộc nhóm rag trong lĩnh vực nlp ai.
+BLEU score,điểm BLEU,nlp_ai,evaluation,nlp,BLEU,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+ROUGE score,điểm ROUGE,nlp_ai,evaluation,nlp,ROUGE,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+METEOR,METEOR,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+BERTScore,BERTScore,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+COMET,COMET,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+perplexity,độ hỗn độn,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+exact match,khớp chính xác,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+F1 score,điểm F1,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+precision,độ chính xác,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+recall,độ bao phủ,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+accuracy,độ chính xác tổng thể,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+human evaluation,đánh giá thủ công,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+fluency,độ trôi chảy,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+adequacy,độ đầy đủ nội dung,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+faithfulness,độ trung thực,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+robustness,độ vững,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+bias evaluation,đánh giá thiên lệch,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+toxicity detection,phát hiện độc hại,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+benchmark,bộ chuẩn đánh giá,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+leaderboard,bảng xếp hạng,nlp_ai,evaluation,nlp,,A term in evaluation within nlp ai.,Thuật ngữ thuộc nhóm evaluation trong lĩnh vực nlp ai.
+automatic speech recognition,nhận dạng tiếng nói tự động,nlp_ai,applications,nlp,ASR,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+speech-to-text,chuyển giọng nói thành văn bản,nlp_ai,applications,nlp,STT,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+text-to-speech,chuyển văn bản thành giọng nói,nlp_ai,applications,nlp,TTS,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+speech translation,dịch tiếng nói,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+multimodal model,mô hình đa phương thức,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+vision-language model,mô hình thị giác-ngôn ngữ,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+image captioning,mô tả ảnh,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+optical character recognition,nhận dạng ký tự quang học,nlp_ai,applications,nlp,OCR,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+dialogue system,hệ thống hội thoại,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+chatbot,chatbot,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+intent classification,phân loại ý định,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+slot filling,điền slot,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+question answering,trả lời câu hỏi,nlp_ai,applications,nlp,QA,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+summarization,tóm tắt,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+information extraction,trích xuất thông tin,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+text classification,phân loại văn bản,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+sentiment analysis,phân tích cảm xúc,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+topic modeling,mô hình chủ đề,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+data augmentation,tăng cường dữ liệu,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
+active learning,học chủ động,nlp_ai,applications,nlp,,A term in applications within nlp ai.,Thuật ngữ thuộc nhóm applications trong lĩnh vực nlp ai.
