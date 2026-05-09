@@ -10,13 +10,14 @@
 | Docker Desktop | https://www.docker.com/products/docker-desktop | Phải đang chạy trước khi dùng |
 | Git | https://git-scm.com | Để clone repo |
 | Ollama | https://ollama.com/download | Chạy trên máy host, không phải trong Docker |
+| Python 3.10+ | https://www.python.org/downloads | Để chạy indexer build vectorstore |
 
 ---
 
 ## Bước 1 — Clone repo
 
 ```powershell
-git clone <your-repo-url>
+git clone https://github.com/duyanhtr130905/sci-translate
 cd sci-translate
 ```
 
@@ -48,11 +49,29 @@ ollama list
 
 ---
 
-## Bước 4 — Chạy toàn bộ stack
-# Bước này chạy 1 lần duy nhất để build vectorstore cho RAG
+## Bước 4 — Build vectorstore cho RAG (chạy 1 lần duy nhất)
+
+Bước này tạo ra dữ liệu để RAG hoạt động. Không có vectorstore thì chất lượng dịch sẽ thấp hơn đáng kể.
+
+```powershell
 cd ai_service
 pip install -r requirements.txt
 python rag/indexer.py
+cd ..
+```
+
+Kết quả mong đợi:
+```
+Merging VI + EN...
+Total pairs: XXXX
+Saved JSON: vi_en_dict.json
+=== DONE ===
+```
+
+---
+
+## Bước 5 — Chạy toàn bộ stack
+
 ```powershell
 # Đứng ở thư mục gốc sci-translate, KHÔNG phải ai_service
 docker-compose up -d
@@ -62,7 +81,7 @@ Lần đầu chạy sẽ mất 3-5 phút để pull images.
 
 ---
 
-## Bước 5 — Kiểm tra container healthy
+## Bước 6 — Kiểm tra container healthy
 
 ```powershell
 docker-compose ps
@@ -80,7 +99,7 @@ Nếu `ai_service` chưa running, chờ thêm 30s rồi chạy lại.
 
 ---
 
-## Bước 6 — Truy cập docs và dịch
+## Bước 7 — Truy cập docs và dịch
 
 Mở trình duyệt:
 ```
@@ -151,6 +170,7 @@ python -m pytest tests/test_ollama.py -v
 | `ai_service` không start | neo4j chưa healthy | Chờ 30s → `docker-compose restart ai_service` |
 | `connection refused 11434` | Ollama chưa chạy | Mở Ollama app, kiểm tra `ollama list` |
 | Model not found | Chưa pull model | Chạy lại Bước 3 |
+| RAG không có examples | Chưa chạy indexer | Chạy lại Bước 4 |
 | Port 8000 bị chiếm | Process khác dùng port | Tắt process đó hoặc đổi port trong `.env` |
 | neo4j unhealthy mãi | Container lỗi | `docker-compose restart neo4j` |
 | `.env` không có | Quên copy | Chạy lại Bước 2 |
@@ -160,15 +180,6 @@ python -m pytest tests/test_ollama.py -v
 ## Tắt toàn bộ stack
 
 ```powershell
-docker-compose down
-```
-
-Giữ lại data (postgres, neo4j...):
-```powershell
-docker-compose down  # volumes vẫn còn
-```
-
-Xóa luôn data:
-```powershell
-docker-compose down -v  # xóa hết volumes
+docker-compose down        # tắt, giữ lại data
+docker-compose down -v     # tắt, xóa luôn data
 ```
