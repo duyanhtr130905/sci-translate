@@ -84,7 +84,7 @@ ai_service/
 │   └── API_SPEC.md               ← Mô tả chi tiết từng endpoint
 │
 ├── scripts/
-│   ├── pull_model.sh         ← Tải model Ollama (chạy 1 lần): ollama pull gemma2
+│   ├── pull_model.sh         ← Tải model Ollama (chạy 1 lần): ollama pull qwen2.5:7b
 │   ├── index_corpus.py       ← Index corpus vào ChromaDB (chạy sau khi có corpus)
 │   └── eval_bleu.py          ← Tính BLEU trên test set, in report
 │
@@ -119,8 +119,8 @@ ollama --version
 ### Bước 2 — Pull model dịch thuật
 
 ```bash
-# Khuyến nghị: Gemma 2 9B (tốt cho dịch EN→VI, ~5.4GB)
-ollama pull gemma2
+# Khuyến nghị: Qwen 2.5 7B (mạnh multilingual, tốt cho dịch EN→VI)
+ollama pull qwen2.5:7b
 
 # Hoặc alternatives:
 # ollama pull qwen2.5        # Qwen 2.5 (mạnh multilingual)
@@ -155,7 +155,7 @@ cp .env.example .env
 ```env
 # ── Ollama ──
 OLLAMA_BASE_URL=http://localhost:11434
-OLLAMA_MODEL=gemma2
+OLLAMA_MODEL=qwen2.5:7b
 OLLAMA_TEMPERATURE=0.3
 OLLAMA_NUM_CTX=4096
 OLLAMA_TIMEOUT=120
@@ -170,7 +170,7 @@ OLLAMA_TIMEOUT=120
 ollama serve                  # Nếu chưa chạy (mặc định port 11434)
 
 # 2. Kiểm tra model đã pull chưa
-ollama list                   # Phải thấy "gemma2" hoặc model đã chọn
+ollama list                   # Phải thấy "qwen2.5:7b" hoặc model đã chọn
 
 # 3. Chạy AI service (development, reload tự động)
 uvicorn main:app --reload --port 8000
@@ -180,7 +180,7 @@ docker compose up ai_service
 
 # 5. Kiểm tra health
 curl http://localhost:8000/health
-# → {"status": "ok", "engine": "ollama", "model": "gemma2", "ollama_url": "http://localhost:11434"}
+# → {"status": "ok", "engine": "ollama", "model": "qwen2.5:7b", "ollama_url": "http://localhost:11434"}
 ```
 
 ---
@@ -396,9 +396,9 @@ python scripts/eval_bleu.py --test-file ../data_pipeline/corpus/test.tsv
 
 - **Ollama phải chạy trước** khi start AI service. Nếu Ollama daemon chưa chạy → service sẽ báo lỗi tại `/health`
 - **KHÔNG commit** file `.env` chứa credentials
-- **Model Ollama không nằm trong repo** — mỗi dev cần tự `ollama pull gemma2` (hoặc chạy `scripts/pull_model.sh`)
+- **Model Ollama không nằm trong repo** — mỗi dev cần tự `ollama pull qwen2.5:7b` (hoặc chạy `scripts/pull_model.sh`)
 - Mỗi thay đổi schema Pydantic **phải thông báo TV3 trước**
 - Nếu thêm endpoint mới sau Tuần 8, tạo issue `[TV2] New endpoint: /xxx` và assign TV3
 - **Timeout:** LLM generation chậm hơn MarianMT NMT. Đặt `OLLAMA_TIMEOUT=120` (giây) để tránh timeout khi dịch đoạn dài
-- **RAM khuyến nghị:** ≥ 16GB RAM cho model 7B–9B. Nếu máy yếu, dùng model nhỏ hơn (`ollama pull gemma2:2b`)
+- **RAM khuyến nghị:** ≥ 16GB RAM cho model 7B–9B. Nếu máy yếu, dùng model nhỏ hơn (`ollama pull qwen2.5:3b`)
 - **GPU (tuỳ chọn):** Ollama tự detect NVIDIA GPU. Nếu có GPU → tốc độ nhanh hơn ~5-10x
