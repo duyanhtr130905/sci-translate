@@ -49,7 +49,10 @@ ollama list
 ---
 
 ## Bước 4 — Chạy toàn bộ stack
-
+# Bước này chạy 1 lần duy nhất để build vectorstore cho RAG
+cd ai_service
+pip install -r requirements.txt
+python rag/indexer.py
 ```powershell
 # Đứng ở thư mục gốc sci-translate, KHÔNG phải ai_service
 docker-compose up -d
