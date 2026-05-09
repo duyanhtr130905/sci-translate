@@ -1,53 +1,21 @@
-#!/usr/bin/env bash
-# ============================================================
-# pull_model.sh — Tải model Ollama cho AI Service
-# Chạy 1 lần sau khi cài Ollama
-# Usage: bash scripts/pull_model.sh [model_name]
-# ============================================================
+#!/bin/bash
+# Script để tự động hóa việc chuẩn bị model cho Ollama
 
-set -euo pipefail
+MODEL_NAME="qwen2.5:3b"
 
-MODEL_NAME="${1:-qwen2.5:7b}"
+echo "=== AI Service Model Downloader ==="
+echo "Checking Ollama connection..."
 
-echo "╔══════════════════════════════════════════╗"
-echo "║  SCI-Translate — Ollama Model Setup      ║"
-echo "╚══════════════════════════════════════════╝"
-echo ""
-
-# Kiểm tra Ollama đã cài chưa
-if ! command -v ollama &> /dev/null; then
-    echo "❌ Ollama chưa được cài đặt!"
-    echo "   Hướng dẫn cài đặt:"
-    echo "   - Linux/WSL: curl -fsSL https://ollama.ai/install.sh | sh"
-    echo "   - macOS:     brew install ollama"
-    echo "   - Windows:   https://ollama.com/download/windows"
+if ! command -v ollama &> /dev/null
+then
+    echo "Error: Ollama is not installed on the host."
     exit 1
 fi
 
-echo "✅ Ollama version: $(ollama --version)"
-echo ""
+echo "Pulling model: $MODEL_NAME"
+ollama pull $MODEL_NAME
 
-# Kiểm tra Ollama daemon
-if ! ollama list &> /dev/null 2>&1; then
-    echo "⚠️  Ollama daemon chưa chạy. Đang khởi động..."
-    ollama serve &
-    sleep 3
-fi
+echo "Pulling Embedding model for RAG..."
+ollama pull nomic-embed-text
 
-# Pull model
-echo "📥 Đang tải model: ${MODEL_NAME}..."
-echo "   (Lần đầu có thể mất vài phút tùy dung lượng model)"
-echo ""
-ollama pull "${MODEL_NAME}"
-
-echo ""
-echo "✅ Model '${MODEL_NAME}' đã sẵn sàng!"
-echo ""
-
-# Liệt kê models đã cài
-echo "📋 Danh sách models hiện có:"
-ollama list
-
-echo ""
-echo "🚀 Bạn có thể chạy AI service bằng:"
-echo "   OLLAMA_MODEL=${MODEL_NAME} uvicorn main:app --reload --port 8000"
+echo "Successfully prepared all models."
