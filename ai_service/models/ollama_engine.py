@@ -1,139 +1,131 @@
-"""
-Ollama Translation Engine
-Sử dụng Ollama LLM cục bộ để dịch văn bản khoa học EN→VI.
-Kết hợp RAG context và KG terms vào prompt để tăng chất lượng dịch.
-"""
-
 import os
-import logging
-from typing import Optional
+import re
+from langchain_ollama import OllamaLLM
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from models.ollama_config import MODEL_AI, get_ollama_params
+from models.ollama_config import GLOSSARY as STATIC_GLOSSARY
 
-import ollama as ollama_sdk
-from models.ollama_config import OllamaConfig
 
-logger = logging.getLogger(__name__)
+VI_PATTERN = re.compile(
+    r"[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]"
+)
+
+
+def get_chain():
+    ollama_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+    params = get_ollama_params()
+
+    llm = OllamaLLM(
+    base_url=ollama_url,
+    model=MODEL_AI,
+
+    temperature=0.0,      
+    top_k=1,              
+    top_p=1.1,            
+    repeat_penalty=1.0,   
+
+    num_ctx=4096,
+    num_gpu=params["num_gpu"],
+    num_thread=params["num_thread"],
+
+    stop=["### INPUT", "Source (", "---"],
+)
+
+    template = """### SYSTEM
+You are a professional translation engine. Output ONLY the translation — no labels, no explanation, no punctuation changes.
+
+### MANDATORY GLOSSARY (you MUST use these exact translations if the term appears in source):
+{glossary}
+
+### EXAMPLES (style reference only):
+{examples}
+
+### INPUT
+Source ({source_lang}): {input}
+
+### OUTPUT
+{target_lang} translation (use MANDATORY GLOSSARY terms exactly):"""
+
+    prompt = ChatPromptTemplate.from_template(template)
+    return prompt | llm | StrOutputParser()
 
 
 class OllamaEngine:
-    """Translation engine sử dụng Ollama LLM cục bộ."""
+    def __init__(self, config=None):
+        self.chain = get_chain()
 
-    def __init__(self, config: Optional[OllamaConfig] = None):
-        self.config = config or OllamaConfig.from_env()
-        self.client = ollama_sdk.Client(host=self.config.base_url)
-        logger.info(
-            f"OllamaEngine initialized: model={self.config.model}, "
-            f"url={self.config.base_url}"
+    
+    def _detect_langs(self, text: str, direction: str | None):
+        if direction and "->" in direction:
+            src, tgt = direction.split("->")
+            src, tgt = src.strip(), tgt.strip()
+        else:
+            src = "vi" if VI_PATTERN.search(text) else "en"
+            tgt = "vi" if src == "en" else "en"
+
+        label = {"en": "English", "vi": "Vietnamese"}
+        return label.get(src, src), label.get(tgt, tgt)
+
+    
+    def _build_kg_block(self, kg_terms: dict | None) -> str:
+        merged = dict(STATIC_GLOSSARY)
+        if kg_terms:
+            merged.update(kg_terms)
+
+        return "\n".join(f"- {k} → {v}" for k, v in merged.items())
+
+    
+    def _postprocess(self, raw: str, fallback: str) -> str:
+        result = raw.strip()
+
+        result = re.sub(
+            r"(?i)^(translation:|output:|target:|vietnamese translation:|english translation:)\s*",
+            "",
+            result,
         )
 
-    def health_check(self) -> dict:
-        """Kiểm tra Ollama daemon và model đã sẵn sàng chưa."""
-        try:
-            models = self.client.list()
-            model_names = [m.model for m in models.models]
-            available = self.config.model in model_names or any(
-                self.config.model in name for name in model_names
-            )
-            return {
-                "status": "ok" if available else "model_not_found",
-                "engine": "ollama",
-                "model": self.config.model,
-                "ollama_url": self.config.base_url,
-                "available_models": model_names,
-            }
-        except Exception as e:
-            logger.error(f"Ollama health check failed: {e}")
-            return {
-                "status": "error",
-                "engine": "ollama",
-                "error": str(e),
-            }
+        result = result.split("\n")[0].strip()
 
+        result = re.sub(r"[\u4e00-\u9fff\u3000-\u303f\uff00-\uffef]+", "", result).strip()
+
+        if len(result) < 2 or not re.search(r'[a-zA-ZÀ-ỹ]', result):
+            return fallback.strip()
+
+        return result
+
+    
     def translate(
         self,
         text: str,
-        domain: str = "general",
-        rag_context: Optional[str] = None,
-        kg_terms: Optional[dict] = None,
+        rag_context: str | None = None,
+        kg_terms: dict | None = None,
+        direction: str | None = None,
+        **kwargs,
     ) -> str:
-        """
-        Dịch văn bản EN→VI sử dụng Ollama LLM.
 
-        Args:
-            text: Câu/đoạn văn bản tiếng Anh cần dịch.
-            domain: Lĩnh vực khoa học (computer_science, biology, physics, ...).
-            rag_context: Context tương tự từ RAG pipeline (nếu có).
-            kg_terms: Dict thuật ngữ chuyên ngành {EN: VI} từ Knowledge Graph.
+        source_lang, target_lang = self._detect_langs(text, direction)
+        kg_block = self._build_kg_block(kg_terms)
+        examples = rag_context if rag_context else "None"
 
-        Returns:
-            Bản dịch tiếng Việt.
-        """
-        system_prompt = self._build_system_prompt(domain)
-        user_prompt = self._build_user_prompt(text, rag_context, kg_terms)
+        text_lower = text.strip().lower()
+        if kg_terms:
+            normalized = {k.lower(): v for k, v in kg_terms.items()}
+            if text_lower in normalized:
+                direct = normalized[text_lower]
+                print(f"[DEBUG KG SHORTCUT] '{text}' → '{direct}'")
+                return direct
 
         try:
-            response = self.client.chat(
-                model=self.config.model,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt},
-                ],
-                options={
-                    "temperature": self.config.temperature,
-                    "num_ctx": self.config.num_ctx,
-                },
-            )
-            translated = response.message.content.strip()
-            logger.debug(f"Translated: '{text[:50]}...' → '{translated[:50]}...'")
-            return translated
+            raw_output = self.chain.invoke({
+                "input": text,
+                "source_lang": source_lang,
+                "target_lang": target_lang,
+                "glossary": kg_block,
+                "examples": examples,
+            })
+
+            return self._postprocess(raw_output, fallback=raw_output)
 
         except Exception as e:
-            logger.error(f"Ollama translation failed: {e}")
-            raise RuntimeError(f"Translation failed: {e}") from e
-
-    def _build_system_prompt(self, domain: str) -> str:
-        """Tạo system prompt cho LLM dựa trên domain."""
-        domain_map = {
-            "computer_science": "khoa học máy tính",
-            "biology": "sinh học",
-            "physics": "vật lý",
-            "chemistry": "hoá học",
-            "general": "tổng quát",
-        }
-        domain_vi = domain_map.get(domain, "tổng quát")
-
-        return (
-            f"Bạn là chuyên gia dịch thuật tài liệu khoa học lĩnh vực {domain_vi} "
-            f"từ tiếng Anh sang tiếng Việt.\n\n"
-            f"Quy tắc:\n"
-            f"1. Dịch chính xác, giữ nguyên ý nghĩa khoa học.\n"
-            f"2. Sử dụng đúng thuật ngữ chuyên ngành tiếng Việt (nếu được cung cấp).\n"
-            f"3. Giữ nguyên các ký hiệu toán học, công thức, tên riêng.\n"
-            f"4. CHỈ trả về bản dịch, không giải thích thêm.\n"
-            f"5. Giữ format đoạn văn giống bản gốc."
-        )
-
-    def _build_user_prompt(
-        self,
-        text: str,
-        rag_context: Optional[str] = None,
-        kg_terms: Optional[dict] = None,
-    ) -> str:
-        """Tạo user prompt kết hợp RAG context và KG terms."""
-        parts = []
-
-        if rag_context:
-            parts.append(
-                f"Tham khảo các bản dịch tương tự:\n{rag_context}\n"
-            )
-
-        if kg_terms:
-            terms_str = "\n".join(
-                f"  - {en} → {vi}" for en, vi in kg_terms.items()
-            )
-            parts.append(
-                f"Thuật ngữ chuyên ngành cần sử dụng:\n{terms_str}\n"
-            )
-
-        parts.append(f"Dịch đoạn sau sang tiếng Việt:\n{text}")
-
-        return "\n".join(parts)
+            return f"Error: {e}"
