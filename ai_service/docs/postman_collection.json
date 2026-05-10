@@ -1,0 +1,75 @@
+{
+  "info": {
+    "name": "SCI Translate AI Service",
+    "description": "Postman collection for TV2 -> TV3 AI service handoff.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "health",
+            ""
+          ]
+        }
+      }
+    },
+    {
+      "name": "Translate Text",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Machine learning models can improve translation quality.\",\n  \"source_lang\": \"en\",\n  \"target_lang\": \"vi\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/translate/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "translate",
+            ""
+          ]
+        }
+      }
+    },
+    {
+      "name": "Terms",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/terms/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "terms",
+            ""
+          ]
+        }
+      }
+    }
+  ]
+}

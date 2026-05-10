@@ -1,30 +1,31 @@
 import os
 import sys
 import csv
+from pathlib import Path
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 AI_SERVICE_DIR = os.path.dirname(SCRIPT_DIR)
 sys.path.insert(0, AI_SERVICE_DIR)
 
-import nltk
-from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction, corpus_bleu
-
-nltk.download("punkt", quiet=True)
+from sacrebleu.metrics import BLEU
 
 from models.ollama_engine import OllamaEngine
 from models.ollama_config import OllamaConfig
 
-TEST_DATA_PATH = os.path.join(
-    AI_SERVICE_DIR, "..", "data_pipeline", "corpus", "test.tsv"
+TEST_DATA_PATH = os.getenv(
+    "TEST_DATA_PATH",
+    os.path.join(AI_SERVICE_DIR, "..", "data_pipeline", "corpus", "test.tsv"),
 )
-MAX_SAMPLES = 10        
-DIRECTION   = "en->vi"   
+MAX_SAMPLES = int(os.getenv("BLEU_MAX_SAMPLES", "10"))
+DIRECTION = os.getenv("BLEU_DIRECTION", "en->vi")
 
-def tokenize(text: str) -> list[str]:
-    return text.lower().strip().split()
 
 def evaluate(test_data_path: str, direction: str, max_samples: int):
-    smooth = SmoothingFunction().method1
+    test_path = Path(test_data_path)
+    if not test_path.exists():
+        raise FileNotFoundError(f"Test data not found: {test_path}")
+
+    bleu = BLEU(effective_order=True)
     engine = OllamaEngine(config=OllamaConfig())
 
     all_references = []
@@ -38,7 +39,7 @@ def evaluate(test_data_path: str, direction: str, max_samples: int):
     print(f"Samples  : {max_samples}")
     print("-" * 60)
 
-    with open(test_data_path, "r", encoding="utf-8") as f:
+    with open(test_path, "r", encoding="utf-8") as f:
         reader = csv.reader(f, delimiter="\t")
 
         for row in reader:
@@ -68,22 +69,15 @@ def evaluate(test_data_path: str, direction: str, max_samples: int):
                     skipped += 1
                     continue
 
-                ref_tokens  = tokenize(ref_text)
-                hyp_tokens  = tokenize(candidate)
-
-                if not hyp_tokens or not ref_tokens:
+                if not candidate.strip() or not ref_text.strip():
                     skipped += 1
                     continue
 
                 # Sentence BLEU
-                score = sentence_bleu(
-                    [ref_tokens],
-                    hyp_tokens,
-                    smoothing_function=smooth,
-                )
+                score = bleu.sentence_score(candidate, [ref_text]).score
 
-                all_references.append([ref_tokens])
-                all_hypotheses.append(hyp_tokens)
+                all_references.append(ref_text)
+                all_hypotheses.append(candidate)
                 sentence_scores.append(score)
                 total_cases += 1
 
@@ -107,7 +101,7 @@ def evaluate(test_data_path: str, direction: str, max_samples: int):
 
     avg_sentence_bleu = sum(sentence_scores) / len(sentence_scores)
 
-    avg_corpus_bleu = corpus_bleu(all_references, all_hypotheses)
+    avg_corpus_bleu = bleu.corpus_score(all_hypotheses, [all_references]).score
 
     print(f"Evaluated      : {total_cases} samples")
     print(f"Skipped        : {skipped} samples")
@@ -116,11 +110,11 @@ def evaluate(test_data_path: str, direction: str, max_samples: int):
     print("-" * 60)
 
     score_to_check = avg_corpus_bleu
-    if score_to_check >= 0.4:
+    if score_to_check >= 40:
         verdict = "GOOD"
-    elif score_to_check >= 0.25:
+    elif score_to_check >= 30:
         verdict = "ACCEPTABLE"
-    elif score_to_check >= 0.1:
+    elif score_to_check >= 10:
         verdict = "NEEDS IMPROVEMENT"
     else:
         verdict = "POOR"
@@ -135,11 +129,11 @@ def evaluate(test_data_path: str, direction: str, max_samples: int):
     )
     print("\nTop 3 BEST translations:")
     for idx, sc in ranked[:3]:
-        print(f"  Score: {sc:.4f} | {all_hypotheses[idx][:8]}")
+        print(f"  Score: {sc:.4f} | {all_hypotheses[idx][:80]}")
 
     print("\nTop 3 WORST translations:")
     for idx, sc in ranked[-3:]:
-        print(f"  Score: {sc:.4f} | {all_hypotheses[idx][:8]}")
+        print(f"  Score: {sc:.4f} | {all_hypotheses[idx][:80]}")
 
 
 if __name__ == "__main__":

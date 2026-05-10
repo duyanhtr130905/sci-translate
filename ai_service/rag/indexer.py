@@ -1,9 +1,11 @@
 import json
 import os
 from rag.vector_store import build_vectorstore
+from pathlib import Path
 
-VI_PATH = r"C:\Users\ACER NITRO 5\Desktop\KPDL_Final_Edition\sci-translate\data_pipeline\raw\arxiv_sentences_vi.json"
-EN_PATH = r"C:\Users\ACER NITRO 5\Desktop\KPDL_Final_Edition\sci-translate\data_pipeline\raw\arxiv_sentences_en.json"
+ROOT = Path(__file__).resolve().parents[2]
+VI_PATH = ROOT / "data_pipeline" / "raw" / "arxiv_sentences_vi.json"
+EN_PATH = ROOT / "data_pipeline" / "raw" / "arxiv_sentences_en.json"
 
 OUTPUT_JSON = "vi_en_dict.json"
 DB_DIR = "vectorstore"
