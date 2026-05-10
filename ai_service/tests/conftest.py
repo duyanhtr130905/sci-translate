@@ -12,12 +12,14 @@ def mock_ollama_client():
     """Mock Ollama client — không cần Ollama daemon thật."""
     client = MagicMock()
 
+    # Mock chat response
     mock_response = MagicMock()
     mock_response.message.content = "Đây là bản dịch mẫu."
     client.chat.return_value = mock_response
 
+    # Mock list response
     mock_model = MagicMock()
-    mock_model.model = "qwen2.5:3b"
+    mock_model.model = "qwen2.5:7b"
     mock_models = MagicMock()
     mock_models.models = [mock_model]
     client.list.return_value = mock_models

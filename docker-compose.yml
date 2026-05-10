@@ -1,8 +1,11 @@
 # ============================================================================
-# SCI-Translate — Docker Compose (Final Edition)
+# SCI-Translate — Docker Compose
+# 8 services: postgres, neo4j, chromadb, redis, rabbitmq, ai_service, drupal, superset
+# Tất cả credentials đọc từ file .env (cp .env.example .env)
 # ============================================================================
 
 services:
+
   # ── 1. PostgreSQL 15 ──────────────────────────────────────────────────────
   postgres:
     image: postgres:15-alpine
@@ -22,6 +25,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 30s
     networks:
       - sci_translate_network
 
@@ -34,18 +38,19 @@ services:
       - "${NEO4J_HTTP_PORT:-7474}:7474"
       - "${NEO4J_BOLT_PORT:-7687}:7687"
     environment:
-      # Nếu đang dev, hãy dùng AUTH none để tránh lỗi mật khẩu nhức đầu
-      - NEO4J_AUTH=none
-      - NEO4J_PLUGINS=["apoc"]
+      NEO4J_AUTH: ${NEO4J_USER}/${NEO4J_PASSWORD}
+      NEO4J_PLUGINS: '["apoc"]'
+      NEO4J_server_memory_heap_initial__size: "256m"
+      NEO4J_server_memory_heap_max__size: "512m"
     volumes:
       - neo4j_data:/data
       - neo4j_logs:/logs
     healthcheck:
-      # Sửa lệnh check: Nếu AUTH=none thì không cần truyền user/pass vào lệnh check
-      test: ["CMD", "cypher-shell", "RETURN 1"]
+      test: ["CMD", "cypher-shell", "-u", "${NEO4J_USER}", "-p", "${NEO4J_PASSWORD}", "RETURN 1"]
       interval: 15s
       timeout: 10s
       retries: 5
+      start_period: 40s
     networks:
       - sci_translate_network
 
@@ -59,6 +64,8 @@ services:
     environment:
       IS_PERSISTENT: "TRUE"
       ANONYMIZED_TELEMETRY: "FALSE"
+      CHROMA_SERVER_AUTHN_CREDENTIALS: ${CHROMADB_TOKEN:-}
+      CHROMA_SERVER_AUTHN_PROVIDER: ${CHROMADB_AUTH_PROVIDER:-}
     volumes:
       - chromadb_data:/chroma/chroma
     networks:
@@ -79,10 +86,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 10s
     networks:
       - sci_translate_network
 
-  # ── 5. RabbitMQ ──────────────────────────────────────────────────────────
+  # ── 5. RabbitMQ 3 (Management UI) ────────────────────────────────────────
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: sci_rabbitmq
@@ -93,6 +101,7 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+      RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_VHOST:-/}
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
     networks:
@@ -102,30 +111,55 @@ services:
   ai_service:
     build:
       context: ./ai_service
+      dockerfile: Dockerfile
     container_name: sci_ai_service
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "${AI_SERVICE_PORT:-8000}:8000"
     environment:
-      - PYTHONPATH=/app
-      - VECTOR_DB_PATH=/app/vectorstore
-      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
-      - NEO4J_URI=bolt://neo4j:7687
-      - NEO4J_USER=${NEO4J_USER}
-      - NEO4J_PASSWORD=${NEO4J_PASSWORD}
-      - CHROMADB_HOST=chromadb
-      - CHROMADB_PORT=8000
-      - REDIS_URL=redis://:${REDIS_PASSWORD:-}@redis:6379/0
-      - CELERY_BROKER_URL=amqp://${RABBITMQ_USER}:${RABBITMQ_PASSWORD}@rabbitmq:5672/
-      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      # Database
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      # Neo4j
+      NEO4J_URI: bolt://neo4j:7687
+      NEO4J_USER: ${NEO4J_USER}
+      NEO4J_PASSWORD: ${NEO4J_PASSWORD}
+      # ChromaDB — container nội bộ expose port 8000
+      CHROMADB_HOST: chromadb
+      CHROMADB_PORT: "8000"
+      # Redis
+      REDIS_URL: redis://:${REDIS_PASSWORD:-}@redis:6379/0
+      # RabbitMQ / Celery
+      CELERY_BROKER_URL: amqp://${RABBITMQ_USER}:${RABBITMQ_PASSWORD}@rabbitmq:5672/${RABBITMQ_VHOST:-}
+      CELERY_RESULT_BACKEND: redis://:${REDIS_PASSWORD:-}@redis:6379/1
+      # Ollama
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen2.5:7b}
+      OLLAMA_TEMPERATURE: ${OLLAMA_TEMPERATURE:-0.3}
+      OLLAMA_NUM_CTX: ${OLLAMA_NUM_CTX:-4096}
+      OLLAMA_TIMEOUT: ${OLLAMA_TIMEOUT:-120}
+      OLLAMA_MAX_INPUT_LENGTH: ${OLLAMA_MAX_INPUT_LENGTH:-2048}
+      OLLAMA_BATCH_SIZE: ${OLLAMA_BATCH_SIZE:-4}
+      # AI config
+      AI_DEVICE: ${AI_DEVICE:-cpu}
+      AI_BATCH_SIZE: ${AI_BATCH_SIZE:-8}
+      AI_MAX_LENGTH: ${AI_MAX_LENGTH:-512}
+      # JWT
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      JWT_ALGORITHM: ${JWT_ALGORITHM:-HS256}
+      JWT_EXPIRE_HOURS: ${JWT_EXPIRE_HOURS:-24}
     volumes:
-      - ./ai_service:/app
-      - ./ai_service/vectorstore:/app/vectorstore
-    command: python -m uvicorn main:app --host 0.0.0.0 --port 8000
+      - ai_models:/app/models
     depends_on:
-      postgres: { condition: service_healthy }
-      neo4j: { condition: service_healthy }
-      redis: { condition: service_healthy }
+      postgres:
+        condition: service_healthy
+      neo4j:
+        condition: service_healthy
+      chromadb:
+        condition: service_started
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
     networks:
       - sci_translate_network
 
@@ -138,14 +172,21 @@ services:
       - "${DRUPAL_PORT:-80}:80"
     environment:
       DRUPAL_DATABASE_HOST: postgres
+      DRUPAL_DATABASE_PORT: "5432"
       DRUPAL_DATABASE_NAME: ${DRUPAL_DB_NAME:-drupal}
       DRUPAL_DATABASE_USERNAME: ${POSTGRES_USER}
       DRUPAL_DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+      DRUPAL_HASH_SALT: ${DRUPAL_HASH_SALT}
     volumes:
+      - drupal_modules:/var/www/html/modules
+      - drupal_profiles:/var/www/html/profiles
+      - drupal_themes:/var/www/html/themes
       - drupal_sites:/var/www/html/sites
       - ./cms/modules:/var/www/html/modules/custom:ro
+      - ./cms/themes:/var/www/html/themes/custom:ro
     depends_on:
-      postgres: { condition: service_healthy }
+      postgres:
+        condition: service_healthy
     networks:
       - sci_translate_network
 
@@ -158,24 +199,47 @@ services:
       - "${SUPERSET_PORT:-8088}:8088"
     environment:
       SUPERSET_SECRET_KEY: ${SUPERSET_SECRET_KEY}
+      # Superset metadata dùng chung PostgreSQL
       SQLALCHEMY_DATABASE_URI: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${SUPERSET_DB_NAME:-superset}
+      SUPERSET_ADMIN_USER: ${SUPERSET_ADMIN_USER:-admin}
+      SUPERSET_ADMIN_PASSWORD: ${SUPERSET_ADMIN_PASSWORD:-admin}
+      SUPERSET_ADMIN_EMAIL: ${SUPERSET_ADMIN_EMAIL:-admin@sci-translate.local}
+      SUPERSET_ADMIN_FIRSTNAME: ${SUPERSET_ADMIN_FIRSTNAME:-Admin}
+      SUPERSET_ADMIN_LASTNAME: ${SUPERSET_ADMIN_LASTNAME:-SCI}
     volumes:
       - superset_home:/app/superset_home
     depends_on:
-      postgres: { condition: service_healthy }
+      postgres:
+        condition: service_healthy
     networks:
       - sci_translate_network
 
 # ── Named Volumes ──────────────────────────────────────────────────────────
 volumes:
   postgres_data:
+    name: sci_postgres_data
   neo4j_data:
+    name: sci_neo4j_data
   neo4j_logs:
+    name: sci_neo4j_logs
   chromadb_data:
+    name: sci_chromadb_data
   redis_data:
+    name: sci_redis_data
   rabbitmq_data:
+    name: sci_rabbitmq_data
+  ai_models:
+    name: sci_ai_models
+  drupal_modules:
+    name: sci_drupal_modules
+  drupal_profiles:
+    name: sci_drupal_profiles
+  drupal_themes:
+    name: sci_drupal_themes
   drupal_sites:
+    name: sci_drupal_sites
   superset_home:
+    name: sci_superset_home
 
 # ── Network ────────────────────────────────────────────────────────────────
 networks:
