@@ -1,8 +1,10 @@
-# Frontend & CMS & BI — TV3 (Web & Mobile Developer)
+# Frontend & CMS & BI — TV3 (Flutter Web & Mobile Developer)
 
 > **Người phụ trách:** TV3  
-> **Stack:** React 18 · React Native · Drupal 10 · Apache Superset · Docker  
+> **Stack:** Flutter 3.x · Dart · Drupal 10 · Apache Superset · Docker  
 > **Phụ thuộc:** AI Service của TV2 (Tuần 8 mới có API)
+
+> Quy ước hiện tại: `frontend/web` là Flutter project dùng chung cho Web và Mobile. Nếu TV3 tách thêm `frontend/mobile`, project đó vẫn dùng Flutter/Dart và tái sử dụng cùng API contract.
 
 ---
 
@@ -10,41 +12,41 @@
 
 ```
 frontend/
-├── web/                         ← React.js Web App
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── TranslateForm/   ← Upload file + chọn domain
-│   │   │   ├── BilingualView/   ← Hiển thị song ngữ + highlight thuật ngữ
-│   │   │   ├── TermTooltip/     ← Tooltip tra cứu thuật ngữ KG
-│   │   │   ├── ReviewPanel/     ← QA Review interface
-│   │   │   └── Dashboard/       ← Link đến Superset
-│   │   ├── pages/
-│   │   │   ├── LoginPage.jsx
-│   │   │   ├── TranslatePage.jsx   ← Trang dịch chính
-│   │   │   ├── HistoryPage.jsx     ← Lịch sử dịch
-│   │   │   ├── TermsPage.jsx       ← Tra cứu thuật ngữ
-│   │   │   └── ReviewPage.jsx      ← QA review (chỉ Reviewer)
-│   │   ├── hooks/
-│   │   │   ├── useTranslate.js  ← Poll job_id cho đến khi completed
-│   │   │   └── useAuth.js       ← JWT token management
-│   │   ├── api/
-│   │   │   ├── aiClient.js      ← Gọi AI Service (localhost:8000)
-│   │   │   └── drupalClient.js  ← Gọi Drupal REST API (localhost:80)
-│   │   └── App.jsx
-│   ├── public/
-│   ├── package.json
-│   └── README.md
-│
-└── mobile/                      ← React Native / Flutter
-    ├── src/
-    │   ├── screens/
-    │   │   ├── HomeScreen.jsx   ← Tab: Dịch nhanh
-    │   │   ├── HistoryScreen.jsx
-    │   │   └── TermsScreen.jsx
-    │   ├── components/
+└── web/                         ← Flutter app: Web + Android/iOS
+    ├── lib/
+    │   ├── main.dart
+    │   ├── app.dart
+    │   ├── core/
+    │   │   ├── config/
+    │   │   │   └── app_config.dart        ← Đọc --dart-define / .env
+    │   │   └── auth/
+    │   │       └── token_store.dart       ← JWT token management
+    │   ├── features/
+    │   │   ├── translate/
+    │   │   │   ├── translate_page.dart    ← Trang dịch chính
+    │   │   │   └── widgets/
+    │   │   │       ├── translate_form.dart
+    │   │   │       └── bilingual_view.dart
+    │   │   ├── history/
+    │   │   │   └── history_page.dart
+    │   │   ├── terms/
+    │   │   │   ├── terms_page.dart
+    │   │   │   └── term_tooltip.dart
+    │   │   ├── review/
+    │   │   │   └── review_page.dart       ← QA review (chỉ Reviewer)
+    │   │   └── dashboard/
+    │   │       └── dashboard_link.dart    ← Link đến Superset
     │   └── services/
-    │       └── api.js           ← Dùng chung endpoint với web
-    ├── package.json
+    │       ├── ai_client.dart             ← Gọi AI Service (localhost:8000)
+    │       ├── drupal_client.dart         ← Gọi Drupal REST API (localhost:80)
+    │       └── mocks/
+    │           └── mock_ai_client.dart
+    ├── test/
+    ├── integration_test/
+    ├── web/
+    ├── android/
+    ├── ios/
+    ├── pubspec.yaml
     └── README.md
 
 cms/                             ← Drupal 10
@@ -73,28 +75,52 @@ analytics/
 
 ---
 
-## 🚀 Chạy Web App (Development)
+## 🚀 Chạy Flutter Web (Development)
 
 ```bash
 cd frontend/web
-npm install
-npm start
+flutter pub get
+flutter run -d chrome --web-port=3000 \
+  --dart-define=AI_SERVICE_URL=http://localhost:8000 \
+  --dart-define=DRUPAL_URL=http://localhost:80 \
+  --dart-define=SUPERSET_URL=http://localhost:8088
 # → http://localhost:3000
 ```
 
-**Cấu hình API endpoints (file `.env.local`):**
+**Cấu hình API endpoints:**
+
+TV3 có thể dùng `--dart-define` như trên, hoặc dùng `.env` nếu app đã tích hợp `flutter_dotenv`.
+
 ```env
-REACT_APP_AI_SERVICE_URL=http://localhost:8000
-REACT_APP_DRUPAL_URL=http://localhost:80
-REACT_APP_SUPERSET_URL=http://localhost:8088
+AI_SERVICE_URL=http://localhost:8000
+DRUPAL_URL=http://localhost:80
+SUPERSET_URL=http://localhost:8088
+USE_MOCK=false
 ```
 
-**⚠️ Trước Tuần 8 (chưa có AI Service):** Dùng mock data:
+**⚠️ Trước Tuần 8 (chưa có AI Service):** dùng mock client:
+
 ```bash
-# Bật mock mode
-REACT_APP_USE_MOCK=true npm start
-# Mock data nằm ở: src/api/__mocks__/
+flutter run -d chrome --web-port=3000 --dart-define=USE_MOCK=true
+# Mock data nằm ở: lib/services/mocks/
 ```
+
+## 📱 Chạy Mobile App (Development)
+
+```bash
+cd frontend/web
+flutter devices
+flutter run -d <device-id> \
+  --dart-define=AI_SERVICE_URL=http://10.0.2.2:8000 \
+  --dart-define=DRUPAL_URL=http://10.0.2.2:80 \
+  --dart-define=SUPERSET_URL=http://10.0.2.2:8088
+```
+
+Lưu ý endpoint theo môi trường:
+
+- Android emulator: dùng `http://10.0.2.2:<port>` để gọi service trên host.
+- iOS simulator: thường dùng được `http://localhost:<port>`.
+- Thiết bị thật: dùng IP LAN của máy chạy Docker, ví dụ `http://192.168.1.10:8000`.
 
 ---
 
@@ -109,6 +135,7 @@ docker compose down -v      # Dừng và xóa volumes (cẩn thận!)
 ```
 
 **Services trong docker-compose.yml:**
+
 ```yaml
 services:
   postgres:    # Port 5432
@@ -125,32 +152,76 @@ services:
 
 ## 📡 Giao tiếp với AI Service (TV2)
 
-TV3 gọi AI Service qua các endpoint đã được TV2 định nghĩa:
+TV3 gọi AI Service qua các endpoint đã được TV2 định nghĩa. Flutter Web và Mobile nên dùng cùng một Dart client.
 
-```javascript
-// src/api/aiClient.js
+```dart
+// lib/services/ai_client.dart
+import 'dart:convert';
+import 'dart:typed_data';
+import 'package:http/http.dart' as http;
 
-// 1. Gửi file để dịch
-const startTranslation = async (file, domain) => {
-  const b64 = await fileToBase64(file)
-  const res = await fetch(`${AI_URL}/translate`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-    body: JSON.stringify({ file_b64: b64, file_type: file.name.split('.').pop(), domain })
-  })
-  return res.json()  // { job_id, status, estimated_seconds }
-}
+class AiClient {
+  AiClient({required this.baseUrl, required this.token});
 
-// 2. Poll kết quả (dùng hook useTranslate.js)
-const getResult = async (jobId) => {
-  const res = await fetch(`${AI_URL}/translate/${jobId}`)
-  return res.json()  // { status, result: { segments, bleu_score } }
-}
+  final String baseUrl;
+  final String token;
 
-// 3. Tra thuật ngữ
-const lookupTerm = async (term, domain) => {
-  const res = await fetch(`${AI_URL}/terms/lookup?q=${term}&domain=${domain}`)
-  return res.json()
+  Map<String, String> get _headers => {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      };
+
+  Future<Map<String, dynamic>> startTranslation({
+    required Uint8List fileBytes,
+    required String fileType,
+    required String domain,
+  }) async {
+    final res = await http.post(
+      Uri.parse('$baseUrl/translate/'),
+      headers: _headers,
+      body: jsonEncode({
+        'file_b64': base64Encode(fileBytes),
+        'file_type': fileType,
+        'domain': domain,
+      }),
+    );
+
+    if (res.statusCode != 202 && res.statusCode != 200) {
+      throw Exception('Create translate job failed: ${res.statusCode}');
+    }
+
+    return jsonDecode(res.body) as Map<String, dynamic>;
+  }
+
+  Future<Map<String, dynamic>> getResult(String jobId) async {
+    final res = await http.get(
+      Uri.parse('$baseUrl/translate/$jobId'),
+      headers: {'Authorization': 'Bearer $token'},
+    );
+
+    if (res.statusCode != 200) {
+      throw Exception('Get translate job failed: ${res.statusCode}');
+    }
+
+    return jsonDecode(res.body) as Map<String, dynamic>;
+  }
+
+  Future<Map<String, dynamic>> lookupTerm(String term, String domain) async {
+    final uri = Uri.parse('$baseUrl/terms/lookup').replace(
+      queryParameters: {'q': term, 'domain': domain},
+    );
+
+    final res = await http.get(
+      uri,
+      headers: {'Authorization': 'Bearer $token'},
+    );
+
+    if (res.statusCode != 200) {
+      throw Exception('Lookup term failed: ${res.statusCode}');
+    }
+
+    return jsonDecode(res.body) as Map<String, dynamic>;
+  }
 }
 ```
 
@@ -169,6 +240,7 @@ docker compose exec superset superset import-dashboards \
 ```
 
 **4 charts cần tạo:**
+
 1. `daily_translations.sql` → Line chart: Lượt dịch theo ngày
 2. `bleu_score_trend.sql` → Line chart: BLEU Score trung bình theo tuần
 3. `top_terms.sql` → Bar chart: Top 10 thuật ngữ được tra cứu nhiều nhất
@@ -179,14 +251,18 @@ docker compose exec superset superset import-dashboards \
 ## 🧪 Chạy Tests
 
 ```bash
-# Web unit tests
-cd frontend/web && npm test
+# Flutter unit/widget tests
+cd frontend/web
+flutter test
 
-# Component tests
-npm test -- --testPathPattern=BilingualView
+# Test riêng một widget/feature
+flutter test test/features/translate/bilingual_view_test.dart
 
-# E2E test (cần toàn bộ hệ thống chạy) — TV1 điều phối
-cd tests/e2e && pytest test_web_flows.py -v
+# Integration test Flutter
+flutter test integration_test
+
+# E2E test toàn hệ thống — TV1 điều phối
+cd ../../tests/e2e && pytest test_web_flows.py -v
 ```
 
 ---
@@ -196,6 +272,8 @@ cd tests/e2e && pytest test_web_flows.py -v
 ```
 [ ] docker compose up -d → tất cả services healthy
 [ ] curl http://localhost:8000/health → {"status": "ok"}
+[ ] Flutter web chạy được ở http://localhost:3000
+[ ] Flutter mobile gọi được API theo đúng base URL của emulator/device
 [ ] Test upload file PDF thật → nhận kết quả trong < 60s
 [ ] Bản dịch song ngữ hiển thị đúng trên web
 [ ] Thuật ngữ được highlight và tooltip hoạt động
@@ -208,7 +286,8 @@ cd tests/e2e && pytest test_web_flows.py -v
 
 ## ⚠️ Lưu ý quan trọng
 
-- **Trước Tuần 8** dùng `REACT_APP_USE_MOCK=true` — không ngồi chờ TV2
-- Mọi thay đổi cấu trúc Drupal: export config bằng `drush cex`, commit file `cms/config/`
-- Dashboard Superset: export JSON và commit vào `analytics/superset/dashboards/`
-- **KHÔNG hardcode** URL AI service — dùng biến môi trường trong `.env.local`
+- **Trước Tuần 8** dùng `USE_MOCK=true` — không ngồi chờ TV2.
+- Flutter client không hardcode URL AI service; đọc từ `--dart-define` hoặc `.env`.
+- Dùng `Uint8List` cho file input để chạy được cả Flutter Web và Mobile.
+- Mọi thay đổi cấu trúc Drupal: export config bằng `drush cex`, commit file `cms/config/`.
+- Dashboard Superset: export JSON và commit vào `analytics/superset/dashboards/`.
