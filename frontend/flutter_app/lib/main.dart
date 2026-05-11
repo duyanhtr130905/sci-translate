@@ -5,7 +5,6 @@ import 'screens/history_screen.dart';
 import 'providers/translation_provider.dart';
 import 'screens/main_shell.dart';
 import 'package:flutter/foundation.dart';
-import 'screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +35,7 @@ class MyApp extends StatelessWidget {
             brightness: Brightness.dark,
           ),
         ),
-        home: kIsWeb ? const LoginScreen() : const MainShell(),      ),
+        home: const MainShell(),      ),
     );
   }
 }
