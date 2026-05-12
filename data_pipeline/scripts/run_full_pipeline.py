@@ -58,12 +58,46 @@ def get_seed_csv_files() -> list[Path]:
     return files
 
 
+def run_collectors() -> None:
+    """
+    Luôn chạy collectors bằng Scrapy.
+    Không truyền max_results để lấy tối đa số câu hiện có trong nguồn dữ liệu.
+    """
+    run_cmd(
+        [
+            PYTHON, "-m", "scrapy", "runspider",
+            str(COLLECTORS_DIR / "arxiv_collector.py"),
+            "-a", "save_separate=true",
+            "-a", f"en_output_file={RAW_DIR / 'arxiv_sentences_en.json'}",
+            "-a", f"vi_output_file={RAW_DIR / 'arxiv_sentences_vi.json'}",
+        ],
+        "Collect arXiv data",
+    )
+
+    run_cmd(
+        [
+            PYTHON, "-m", "scrapy", "runspider",
+            str(COLLECTORS_DIR / "pubmed_collector.py"),
+            "-a", "save_separate=true",
+            "-a", f"en_output_file={RAW_DIR / 'pubmed_sentences_en.json'}",
+            "-a", f"vi_output_file={RAW_DIR / 'pubmed_sentences_vi.json'}",
+        ],
+        "Collect PubMed data",
+    )
+
+    run_cmd(
+        [
+            PYTHON, "-m", "scrapy", "runspider",
+            str(COLLECTORS_DIR / "acl_collector.py"),
+            "-a", "save_separate=true",
+            "-a", f"en_output_file={RAW_DIR / 'acl_sentences_en.json'}",
+            "-a", f"vi_output_file={RAW_DIR / 'acl_sentences_vi.json'}",
+        ],
+        "Collect ACL data",
+    )
+
+
 def run_align_all() -> list[Path]:
-    """
-    aligner.py của bạn yêu cầu:
-      --en <file_en> --vi <file_vi> --output <aligned_file>
-    nên phải chạy theo từng cặp file.
-    """
     pairs = [
         ("acl_sentences_en.json", "acl_sentences_vi.json", "acl_aligned.tsv"),
         ("arxiv_sentences_en.json", "arxiv_sentences_vi.json", "arxiv_aligned.tsv"),
@@ -85,12 +119,9 @@ def run_align_all() -> list[Path]:
             [
                 PYTHON,
                 str(ETL_DIR / "aligner.py"),
-                "--en",
-                str(en_path),
-                "--vi",
-                str(vi_path),
-                "--output",
-                str(out_path),
+                "--en", str(en_path),
+                "--vi", str(vi_path),
+                "--output", str(out_path),
             ],
             f"Align {en_name} + {vi_name}",
         )
@@ -103,9 +134,6 @@ def run_align_all() -> list[Path]:
 
 
 def merge_aligned_files(files: list[Path]) -> Path:
-    """
-    Gộp các file aligned thành 1 file all.tsv trước khi deduplicate.
-    """
     merged_path = ALIGNED_DIR / "all.tsv"
     total_lines = 0
 
@@ -127,9 +155,9 @@ def merge_aligned_files(files: list[Path]) -> Path:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run full Data Pipeline for TV4.")
     parser.add_argument(
-        "--with-collectors",
+        "--skip-collectors",
         action="store_true",
-        help="Run collectors before ETL steps.",
+        help="Skip collectors if raw/*.json already exists.",
     )
     parser.add_argument(
         "--skip-db-load",
@@ -150,49 +178,16 @@ def main() -> int:
 
     ensure_dirs()
 
-    if args.with_collectors:
-        run_cmd(
-            [
-                PYTHON, "-m", "scrapy", "runspider",
-                str(COLLECTORS_DIR / "arxiv_collector.py"),
-                "-a", "max_results=20000",
-                "-a", "save_separate=true",
-                "-a", f"en_output_file={RAW_DIR / 'arxiv_sentences_en.json'}",
-                "-a", f"vi_output_file={RAW_DIR / 'arxiv_sentences_vi.json'}",
-            ],
-            "Collect arXiv data",
-        )
-        run_cmd(
-            [
-                PYTHON, "-m", "scrapy", "runspider",
-                str(COLLECTORS_DIR / "pubmed_collector.py"),
-                "-a", "max_results=15000",
-                "-a", "save_separate=true",
-                "-a", f"en_output_file={RAW_DIR / 'pubmed_sentences_en.json'}",
-                "-a", f"vi_output_file={RAW_DIR / 'pubmed_sentences_vi.json'}",
-            ],
-            "Collect PubMed data",
-        )
-        run_cmd(
-            [
-                PYTHON, "-m", "scrapy", "runspider",
-                str(COLLECTORS_DIR / "acl_collector.py"),
-                "-a", "max_results=15000",
-                "-a", "save_separate=true",
-                "-a", f"en_output_file={RAW_DIR / 'acl_sentences_en.json'}",
-                "-a", f"vi_output_file={RAW_DIR / 'acl_sentences_vi.json'}",
-            ],
-            "Collect ACL data",
-        )
+    if not args.skip_collectors:
+        run_collectors()
 
     run_cmd(
         [
             PYTHON,
             str(ETL_DIR / "cleaner.py"),
-            "--input",
-            str(RAW_DIR),
-            "--output",
-            str(CLEANED_DIR),
+            "--input", str(RAW_DIR),
+            "--output", str(CLEANED_DIR),
+            "--drop-empty",
         ],
         "Clean text",
     )
@@ -204,10 +199,11 @@ def main() -> int:
         [
             PYTHON,
             str(ETL_DIR / "deduplicator.py"),
-            "--input",
-            str(merged_aligned),
-            "--output",
-            str(CORPUS_DIR / "all.tsv"),
+            "--input", str(merged_aligned),
+            "--output", str(CORPUS_DIR / "all.tsv"),
+            "--mode", "bilingual",
+            "--fields", "en", "vi",
+            "--drop-empty",
         ],
         "Deduplicate pairs",
     )
@@ -216,12 +212,10 @@ def main() -> int:
         [
             PYTHON,
             str(ETL_DIR / "splitter.py"),
-            "--input",
-            str(CORPUS_DIR / "all.tsv"),
-            "--train",
-            str(CORPUS_DIR / "train.tsv"),
-            "--test",
-            str(CORPUS_DIR / "test.tsv"),
+            "--input", str(CORPUS_DIR / "all.tsv"),
+            "--train", str(CORPUS_DIR / "train.tsv"),
+            "--test", str(CORPUS_DIR / "test.tsv"),
+            "--mode", "bilingual",
         ],
         "Split train/test",
     )
@@ -230,8 +224,7 @@ def main() -> int:
         loader_cmd = [
             PYTHON,
             str(ETL_DIR / "loader.py"),
-            "--file",
-            str(CORPUS_DIR / "train.tsv"),
+            "--file", str(CORPUS_DIR / "train.tsv"),
         ]
         if args.has_header:
             loader_cmd.append("--has-header")
@@ -248,8 +241,7 @@ def main() -> int:
                 [
                     PYTHON,
                     str(KG_DIR / "term_importer.py"),
-                    "--csv",
-                    str(csv_file),
+                    "--csv", str(csv_file),
                 ],
                 f"Seed KG from {csv_file.name}",
             )
