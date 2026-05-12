@@ -35,6 +35,7 @@ def get_ollama_params():
 # =========================
 GLOSSARY = {
     # Nhóm ML Core
+    "Tuesday": "thứ ba",
     "overfitting": "quá khớp",
     "underfitting": "chưa khớp",
     "model": "mô hình",
