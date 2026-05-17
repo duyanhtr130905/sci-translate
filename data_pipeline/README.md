@@ -81,8 +81,6 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\venv\Scripts\Activate.ps1
 ```
 
----
-
 
 Cần set biến môi trường như sau trong PowerShell:
 
