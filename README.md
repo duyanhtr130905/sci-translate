@@ -14,7 +14,7 @@
 |---|---|---|---|
 | [TV1 - Trần Duy Anh] | Leader / BA Lead | BA & QA/QC + Tài liệu | `docs/`, `test/` |
 | [TV2 - Nguyễn Lê Ngọc Bảo] | AI Engineer | AI Module | `feature/ai-*` |
-| [TV3 - Lê Huy Anh Dũng] | Web & Mobile Dev | CMS / Platforms / BI | `feature/web-*`, `feature/mobile-*` |
+| [TV3 - Lê Huy Anh Dũng] | Flutter Web & Mobile Dev | CMS / Platforms / BI | `feature/flutter-*`, `feature/web-*`, `feature/mobile-*` |
 | [TV4 - Phạm Dương Hoàng] | Data Engineer / QA | Dữ liệu | `feature/data-*` |
 
 ---
@@ -24,7 +24,7 @@
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                    FRONTEND LAYER                        │
-│   React Web App (3000)    Mobile App (Expo/RN)          │
+│   Flutter Web App (3000)  Flutter Mobile App            │
 └──────────────────────┬──────────────────────────────────┘
                        │ HTTP / REST
 ┌──────────────────────▼──────────────────────────────────┐
@@ -72,7 +72,7 @@ docker compose exec ai_service python scripts/seed_data.py
 ```
 
 **Truy cập:**
-- Web App: http://localhost:3000
+- Flutter Web App: http://localhost:3000
 - AI API docs: http://localhost:8000/docs
 - Drupal CMS: http://localhost:80
 - Superset BI: http://localhost:8088
@@ -88,8 +88,8 @@ sci-translate/
 ├── data_pipeline/       ← TV4 sở hữu
 ├── cms/                 ← TV3 sở hữu (Drupal)
 ├── frontend/
-│   ├── web/             ← TV3 sở hữu
-│   └── mobile/          ← TV3 sở hữu
+│   ├── web/             ← TV3 sở hữu (Flutter app Web/Mobile)
+│   └── mobile/          ← TV3 sở hữu nếu tách Flutter mobile project
 ├── analytics/           ← TV3 sở hữu (Superset)
 ├── database/            ← TV4 sở hữu (schema + seed)
 ├── tests/
@@ -163,13 +163,13 @@ pytest tests/e2e/ -v                    # TV1 chạy sau W10
 # Tạo branch mới
 git checkout -b feature/ai-rag-pipeline   # TV2
 git checkout -b feature/data-etl          # TV4
-git checkout -b feature/web-translate-ui  # TV3
+git checkout -b feature/flutter-translate-ui  # TV3
 git checkout -b docs/usecase-update       # TV1
 
 # Commit format
 git commit -m "[TV2] feat: add RAG cosine similarity search"
 git commit -m "[TV4] fix: handle empty corpus lines in ETL"
-git commit -m "[TV3] feat: add bilingual display component"
+git commit -m "[TV3] feat: add Flutter bilingual display"
 
 # Push và tạo PR
 git push origin feature/ai-rag-pipeline
@@ -188,7 +188,7 @@ git push origin feature/ai-rag-pipeline
 - [Tài liệu PTTK đầy đủ](docs/PTTK_DataMining.pdf)
 - [TV2: AI Service README](ai_service/README.md)
 - [TV4: Data Pipeline README](data_pipeline/README.md)
-- [TV3: Frontend README](frontend/web/README.md)
+- [TV3: Flutter Frontend README](frontend/web/README.md)
 - [TV3: CMS README](cms/README.md)
 - [TV1: Test Strategy](docs/TEST_STRATEGY.md)
 - [Contract: TV4 → TV2](docs/CONTRACT_DATA_TO_AI.md)

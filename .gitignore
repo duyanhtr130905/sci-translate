@@ -44,3 +44,7 @@ Thumbs.db
 # ── Logs ──
 *.log
 logs/
+ai_service/vectorstore/
+# Chặn các file ổ đĩa ảo của Docker
+docker_file/
+*.vhdx

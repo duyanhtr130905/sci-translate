@@ -1,0 +1,16 @@
+# Core collectors
+Scrapy>=2.11
+
+# ETL / database
+pandas>=2.2
+python-dotenv>=1.0
+SQLAlchemy>=2.0
+psycopg2-binary>=2.9
+psycopg>=3.2
+
+# Knowledge Graph
+neo4j>=5.0
+
+# Tests
+pytest>=8.0
+langdetect>=1.0.9
